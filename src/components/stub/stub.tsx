@@ -4,6 +4,7 @@ import React from 'react'
 import Countdown from 'react-countdown'
 
 const Stub = () => {
+  // @ts-ignore
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
