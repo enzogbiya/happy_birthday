@@ -76,7 +76,7 @@ const Stub = () => {
               <path d='M17.64 18.67 20 21' />
             </svg>
             <Countdown
-              date={new Date('2024-08-04T00:00:00.000').toISOString()}
+              date={new Date('2024-08-05T00:00:00.000').toISOString()}
               renderer={renderer}
             />
           </div>
