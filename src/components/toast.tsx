@@ -4,13 +4,14 @@ interface Props {
   title: string
   message: string
   imgUrl: string
+  onClose: () => void
 }
 
-const Toast: FC<Props> = ({ title, message, imgUrl }) => {
+const Toast: FC<Props> = ({ title, message, imgUrl, onClose }) => {
   return (
     <div
       id='toast-notification'
-      className='absolute bottom-5 right-5 w-full max-w-xs p-4 text-gray-900 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-300'
+      className='absolute top-5 left-1/2 transform -translate-x-1/2 w-full max-w-xs p-4 text-gray-900 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-300'
       role='alert'
     >
       <div className='flex items-center mb-3'>
@@ -22,6 +23,7 @@ const Toast: FC<Props> = ({ title, message, imgUrl }) => {
           className='ms-auto -mx-1.5 -my-1.5 bg-white justify-center items-center flex-shrink-0 text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700'
           data-dismiss-target='#toast-notification'
           aria-label='Close'
+          onClick={onClose}
         >
           <span className='sr-only'>Close</span>
           <svg
@@ -43,7 +45,7 @@ const Toast: FC<Props> = ({ title, message, imgUrl }) => {
       </div>
       <div className='flex items-center'>
         <div className='relative inline-block shrink-0'>
-          <img className='w-12 h-12 rounded-full' src={imgUrl} alt='Jese Leos image' />
+          <img className='w-12 h-12 rounded-full' src={imgUrl} alt={title} />
           <span className='absolute -bottom-2 right-0 inline-flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full'>
             <svg
               className='w-3 h-3 text-white'

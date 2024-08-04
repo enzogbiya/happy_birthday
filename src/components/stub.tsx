@@ -70,6 +70,7 @@ const Stub = () => {
           title={'Storm 🌊'}
           message={'Еще слишком рано для подарков :)'}
           imgUrl={'./storm.png'}
+          onClose={handleClick}
         />
       )}
     </div>
