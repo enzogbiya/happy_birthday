@@ -7,7 +7,7 @@ import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 
 const Stub = () => {
-  const [date, setDate] = React.useState(new Date('2024-08-05T00:00:00.000'))
+  const [date, setDate] = React.useState(new Date())
   const [isToastHidden, setIsToastHidden] = React.useState(true)
 
   const [isCompleted, setIsCompleted] = React.useState(false)
@@ -16,6 +16,10 @@ const Stub = () => {
   const audioRef: any = React.useRef(null)
 
   const { width, height } = useWindowSize()
+
+  React.useEffect(() => {
+    setDate(new Date('2024-08-05T00:00:00.000'))
+  }, [])
 
   const handleClick = () => {
     setIsToastHidden(!isToastHidden)
