@@ -1,9 +1,15 @@
 'use client'
 
+import CountdownTimer from '@/components/stub/stub'
+
 export default function Home() {
-    return (
-        <main><h1>Hello world</h1></main>
+  if (new Date().toLocaleString() < new Date('2024-08-05').toLocaleString()) {
+    return <CountdownTimer date={new Date('2024-08-05T00:00:00.000Z')} />
+  }
 
-    );
+  return (
+    <main>
+      <h1>no stub</h1>
+    </main>
+  )
 }
-
