@@ -7,6 +7,7 @@ import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 
 const Stub = () => {
+  const [date, setDate] = React.useState(new Date('2024-08-05T00:00:00.000'))
   const [isToastHidden, setIsToastHidden] = React.useState(true)
 
   const [isCompleted, setIsCompleted] = React.useState(false)
@@ -75,10 +76,7 @@ const Stub = () => {
               <path d='M6.38 18.7 4 21' />
               <path d='M17.64 18.67 20 21' />
             </svg>
-            <Countdown
-              date={new Date('2024-08-05T00:00:00.000').toISOString()}
-              renderer={renderer}
-            />
+            <Countdown date={date.toISOString()} renderer={renderer} />
           </div>
           <button
             onClick={handleClick}
