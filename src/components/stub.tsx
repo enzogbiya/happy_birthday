@@ -42,6 +42,9 @@ const Stub = () => {
       const formattedHours = hours.toString().padStart(2, '0')
       const formattedMinutes = minutes.toString().padStart(2, '0')
       const formattedSeconds = seconds.toString().padStart(2, '0')
+      console.log(date)
+      console.log(hours + ':' + minutes + ':' + seconds)
+      console.log(formattedHours + ':' + formattedMinutes + ':' + formattedSeconds)
       return (
         <span className='font-medium text-base' suppressHydrationWarning>
           {formattedHours}:{formattedMinutes}:{formattedSeconds}
