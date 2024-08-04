@@ -3,17 +3,40 @@
 import React from 'react'
 import Countdown from 'react-countdown'
 import Toast from '@/components/toast'
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
 const Stub = () => {
   const [isToastHidden, setIsToastHidden] = React.useState(true)
+
+  const [isCompleted, setIsCompleted] = React.useState(false)
+
+  const [isAudioPlaying, setIsAudioPlaying] = React.useState(false)
+  const audioRef: any = React.useRef(null)
+
+  const { width, height } = useWindowSize()
+
   const handleClick = () => {
     setIsToastHidden(!isToastHidden)
+
+    if (audioRef.current && isCompleted) {
+      audioRef.current.play()
+      setIsAudioPlaying(true)
+    }
   }
 
   // @ts-ignore
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
-      return <div>hello</div>
+      setIsCompleted(true)
+      return (
+        <>
+          <span className='font-medium text-base' suppressHydrationWarning>
+            Праздник начался!
+          </span>
+          {isAudioPlaying && <Confetti width={width} height={height} />}
+        </>
+      )
     } else {
       const formattedHours = hours.toString().padStart(2, '0')
       const formattedMinutes = minutes.toString().padStart(2, '0')
@@ -32,7 +55,7 @@ const Stub = () => {
         <div className='flex flex-col items-center justify-center w-[300px] bg-white rounded-md px-2 py-4 shadow-sm'>
           <img alt='Happy Birthday' className='h-[180px] w-auto py-2 mb-5' src={'./card2x.png'} />
           <h2 className='font-medium text-xl text-[#212529] mb-2'>До праздника осталось:</h2>
-          <div className='flex items-center w-[100px] gap-2 text-cyan-500'>
+          <div className='flex justify-center items-center w-[200px] gap-2 text-cyan-500'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='24'
@@ -53,7 +76,7 @@ const Stub = () => {
               <path d='M17.64 18.67 20 21' />
             </svg>
             <Countdown
-              date={new Date('2024-08-05T00:00:00.000').toISOString()}
+              date={new Date('2024-08-04T00:00:00.000').toISOString()}
               renderer={renderer}
             />
           </div>
@@ -63,15 +86,31 @@ const Stub = () => {
           >
             Получить подарок
           </button>
+
+          <audio ref={audioRef}>
+            <source src='./song.mp3' type='audio/mpeg' />
+          </audio>
         </div>
       </div>
-      <Toast
-        isHidden={isToastHidden}
-        title={'Storm 🌊'}
-        message={'Еще слишком рано для подарков :)'}
-        imgUrl={'./storm.png'}
-        onClose={handleClick}
-      />
+      {!isCompleted && (
+        <Toast
+          isHidden={isToastHidden}
+          title={'Storm 🌊'}
+          message={'Еще слишком рано для подарков :)'}
+          imgUrl={'./storm.png'}
+          onClose={handleClick}
+        />
+      )}
+
+      {isCompleted && (
+        <Toast
+          isHidden={isToastHidden}
+          title={'Storm 🌊'}
+          message={'С Днем Рождения! Теперь можно получать подарочки :)'}
+          imgUrl={'./storm.png'}
+          onClose={handleClick}
+        />
+      )}
     </div>
   )
 }
