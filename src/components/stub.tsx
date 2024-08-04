@@ -49,9 +49,7 @@ const Stub = () => {
       setTimerHours(formattedHours)
       setTimerMinutes(formattedMinutes)
       setTimerSeconds(formattedSeconds)
-      console.log(date)
-      console.log(hours + ':' + minutes + ':' + seconds)
-      console.log(formattedHours + ':' + formattedMinutes + ':' + formattedSeconds)
+
       return (
         <span className='font-medium text-base'>
           {timerHours}:{timerMinutes}:{timerSeconds}
