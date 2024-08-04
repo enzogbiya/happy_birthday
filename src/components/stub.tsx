@@ -30,7 +30,7 @@ const Stub = () => {
     <div>
       <div className='flex h-screen items-center justify-center bg-gradient-to-r from-cyan-500 to-blue-500'>
         <div className='flex flex-col items-center justify-center w-[300px] bg-white rounded-md px-2 py-4 shadow-sm'>
-          <img alt='Happy Birthday' className='h-[180px] w-auto py-2' src={'./card2x.png'} />
+          <img alt='Happy Birthday' className='h-[180px] w-auto py-2 mb-5' src={'./card2x.png'} />
           <h2 className='font-medium text-xl text-[#212529] mb-2'>До праздника осталось:</h2>
           <div className='flex items-center w-[100px] gap-2 text-cyan-500'>
             <svg
@@ -65,14 +65,13 @@ const Stub = () => {
           </button>
         </div>
       </div>
-      {!isToastHidden && (
-        <Toast
-          title={'Storm 🌊'}
-          message={'Еще слишком рано для подарков :)'}
-          imgUrl={'./storm.png'}
-          onClose={handleClick}
-        />
-      )}
+      <Toast
+        isHidden={isToastHidden}
+        title={'Storm 🌊'}
+        message={'Еще слишком рано для подарков :)'}
+        imgUrl={'./storm.png'}
+        onClose={handleClick}
+      />
     </div>
   )
 }

@@ -5,13 +5,14 @@ interface Props {
   message: string
   imgUrl: string
   onClose: () => void
+  isHidden: boolean
 }
 
-const Toast: FC<Props> = ({ title, message, imgUrl, onClose }) => {
+const Toast: FC<Props> = ({ title, message, imgUrl, onClose, isHidden }) => {
   return (
     <div
       id='toast-notification'
-      className='absolute top-5 left-1/2 transform -translate-x-1/2 w-full max-w-xs p-4 text-gray-900 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-300'
+      className={`transition  ease-in-out absolute top-0  transform ${isHidden ? '-translate-y-10 opacity-0' : 'translate-y-5 opacity-1'}  left-1/2  -translate-x-1/2 w-full max-w-xs p-4 text-gray-900 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-300`}
       role='alert'
     >
       <div className='flex items-center mb-3'>
