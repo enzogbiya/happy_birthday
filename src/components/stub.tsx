@@ -17,6 +17,10 @@ const Stub = () => {
 
   const { width, height } = useWindowSize()
 
+  const [timerSeconds, setTimerSeconds] = React.useState(0)
+  const [timerMinutes, setTimerMinutes] = React.useState(0)
+  const [timerHours, setTimerHours] = React.useState(0)
+
   const handleClick = () => {
     setIsToastHidden(!isToastHidden)
 
@@ -42,12 +46,15 @@ const Stub = () => {
       const formattedHours = hours.toString().padStart(2, '0')
       const formattedMinutes = minutes.toString().padStart(2, '0')
       const formattedSeconds = seconds.toString().padStart(2, '0')
+      setTimerHours(formattedHours)
+      setTimerMinutes(formattedMinutes)
+      setTimerSeconds(formattedSeconds)
       console.log(date)
       console.log(hours + ':' + minutes + ':' + seconds)
       console.log(formattedHours + ':' + formattedMinutes + ':' + formattedSeconds)
       return (
-        <span className='font-medium text-base' suppressHydrationWarning>
-          {formattedHours}:{formattedMinutes}:{formattedSeconds}
+        <span className='font-medium text-base'>
+          {timerHours}:{timerMinutes}:{timerSeconds}
         </span>
       )
     }
