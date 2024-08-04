@@ -1,5 +1,3 @@
-'use client'
-
 import Stub from '@/components/stub'
 
 export default function Home() {
